@@ -1,0 +1,14 @@
+@use 'abstracts/variables' as var;
+@use 'base/typography';
+@use 'abstracts/mixins' as mix;
+@use 'components/components';
+@use 'layout/layout';
+
+@use 'bootstrap/scss/bootstrap' with (
+    $primary: var.$primary,
+   $secondary: var.$secondary,
+   $warning: var.$warning,
+   $danger: var.$danger,
+   $light: var.$light,
+   $dark: var.$dark
+);
