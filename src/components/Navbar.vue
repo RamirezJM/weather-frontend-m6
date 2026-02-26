@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav align-items-center ms-auto ">
            <router-link class="nav-item nav-link" to="/"  aria-current="page">Home</router-link>
-           <!-- /* <router-link class="nav-item nav-link" to="#pronostico" >Pronósticos</router-link> */ -->
+           <router-link class="nav-item nav-link" to="/pronosticos" >Pronósticos</router-link>
            <router-link class="nav-item nav-link" to="/about" >Acerca de</router-link>
            <router-link class="nav-item nav-link" to="/contacto" >Contacto</router-link>
           </ul>
