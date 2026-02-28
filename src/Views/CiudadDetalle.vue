@@ -2,6 +2,11 @@
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import { ciudades } from '@/data/data'
+import { calcularEstadisticas } from '@/services/climaService'
+
+const estadisticas = computed(() =>
+  ciudad.value ? calcularEstadisticas(ciudad.value) : null
+)
 
 const route = useRoute()
 
@@ -60,6 +65,33 @@ const ciudad = computed(() =>
         </div>
       </div>
     </div>
+
+    <div v-if="estadisticas" class="mt-5">
+  <h3 class="mb-4 text-center">Estadísticas semanales</h3>
+
+  <div class="row text-center">
+    <div class="col-md-4">
+      <h5>🌡 Máxima</h5>
+      <p class="fs-5">{{ estadisticas.max }}°C</p>
+    </div>
+
+    <div class="col-md-4">
+      <h5>❄ Mínima</h5>
+      <p class="fs-5">{{ estadisticas.min }}°C</p>
+    </div>
+
+    <div class="col-md-4">
+      <h5>📊 Promedio</h5>
+      <p class="fs-5">{{ estadisticas.promedio }}°C</p>
+    </div>
+  </div>
+
+  <div class="text-center mt-4">
+    <div class="alert alert-info">
+      {{ estadisticas.tendenciaMensaje }}
+    </div>
+  </div>
+</div>
 
     <!-- Botón volver -->
     <div class="text-center mt-5">
