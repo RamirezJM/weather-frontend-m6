@@ -21,9 +21,7 @@ const ciudad = computed(() =>
     <!-- Header -->
     <div class="text-center mb-4">
       <h1>{{ ciudad.nombre }}</h1>
-      <img
-        :src="ciudad.imagen"
-        :alt="ciudad.nombre"
+      <img :src="ciudad.imagen" :alt="ciudad.nombre"
         class="img-fluid rounded shadow"
         style="max-height: 300px;"
       />
