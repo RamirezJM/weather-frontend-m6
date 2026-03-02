@@ -15,8 +15,8 @@
           <p class="lead fw-normal mt-4 text-center hero__text__paragraph">Transformamos información compleja en una
             experiencia simple para
             que tomes mejores decisiones cada día</p>
-          <a href="#contacto"
-            class="btn hero__btn hero__btn--lg fw-semibold text-uppercase d-block mx-auto mt-5">Contáctanos</a>
+          <router-link to="/contacto"
+            class="btn hero__btn hero__btn--lg fw-semibold text-uppercase d-block mx-auto mt-5">Contáctanos</router-link>
         </div>
       </div>
     </div>
