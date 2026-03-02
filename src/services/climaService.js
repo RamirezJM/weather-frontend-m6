@@ -38,7 +38,7 @@ export const calcularEstadisticas = (ciudad) => {
   return {
     max,
     min,
-    promedio: promedio.toFixed(1),
+    promedio,
     tendenciaMensaje
   }
 }
