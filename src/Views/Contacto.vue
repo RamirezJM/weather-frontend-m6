@@ -30,7 +30,7 @@ const enviarFormulario = () => {
 
   enviado.value = true
 
-  // Simulación de envío on un pequeño desfase de tiempo
+  // Simulación de envío con un pequeño desfase de tiempo
 
   setTimeout(() => {
     form.nombre = ''
@@ -82,7 +82,7 @@ const enviarFormulario = () => {
 
           <!-- Mensaje éxito -->
           <div v-if="enviado" class="alert alert-success mt-3 text-center">
-            Mensaje enviado correctamente ✔
+            Mensaje enviado correctamente
           </div>
 
         </form>
@@ -90,3 +90,10 @@ const enviarFormulario = () => {
     </div>
   </section>
 </template>
+
+<style>
+  form{
+    max-width: 700px;
+    margin: 0 auto;
+  }
+</style>

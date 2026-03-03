@@ -31,8 +31,6 @@ const routes = [
     component: () => import('@/views/CiudadDetalle.vue')
   }
 
-
-
 ]
 
 const router = createRouter({

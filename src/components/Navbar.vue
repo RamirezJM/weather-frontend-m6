@@ -26,8 +26,3 @@
     </nav>
   </header>
 </template>
-<!-- <template>
-  <div style="background: red; padding: 20px;">
-    NAVBAR TEST
-  </div>
-</template> -->
