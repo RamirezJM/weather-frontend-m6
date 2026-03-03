@@ -5,13 +5,13 @@ import Tarjeta from '@/components/Tarjeta.vue'
 
 <template>
   <div class="container py-5">
-    <h1 class="mb-4">Pronósticos</h1>
+    <h2 class="mb-5 text-center">Pronósticos</h2>
 
     <div class="row g-4">
       <div
         v-for="ciudad in ciudades"
         :key="ciudad.id"
-        class="col-md-4"
+        class="col-md-6 col-lg-4"
       >
         <Tarjeta :ciudad="ciudad" />
       </div>
