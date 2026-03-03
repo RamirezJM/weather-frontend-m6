@@ -4,6 +4,8 @@ import { ref, computed } from 'vue'
 import { ciudades } from '@/data/data'
 import { calcularEstadisticas } from '@/services/climaService'
 
+const route = useRoute()
+
 const unidad = ref('C')
 
 const convertirTemp = (temp) => {
@@ -15,11 +17,21 @@ const estadisticas = computed(() =>
   ciudad.value ? calcularEstadisticas(ciudad.value) : null
 )
 
-const route = useRoute()
-
 const ciudad = computed(() =>
   ciudades.find(c => c.id === Number(route.params.id))
 )
+
+const iconos = {
+  despejado: '<i class="bi bi-sun text-warning fs-2"></i>',
+  nublado: '<i class="bi bi-cloud text-secondary fs-2"></i>',
+  lluvia: '<i class="bi bi-cloud-rain text-primary fs-2"></i>',
+  parcial: '<i class="bi bi-cloud-sun text-secondary fs-2"></i>',
+};
+
+const obtenerIcono = (estado) => {
+  return iconos[estado] || 'bi-question-circle'
+}
+
 </script>
 
 <template>
@@ -42,18 +54,17 @@ const ciudad = computed(() =>
     <!-- Datos actuales -->
     <div class="row text-center mb-5">
       <div class="col-md-4">
-        <h4><span><i class="bi bi-thermometer"></i></span> Temperatura</h4>
-        <!-- <p class="fs-4">{{ ciudad.temperatura }}°C</p> -->
-         <p class="fs-4">{{ convertirTemp(ciudad.temperatura).toFixed(1) }}°{{ unidad }}</p>
+        <h4><span><i class="bi bi-thermometer text-danger"></i></span> Temperatura</h4>
+        <p class="fs-4">{{ convertirTemp(ciudad.temperatura).toFixed(1) }}°{{ unidad }}</p>
       </div>
 
       <div class="col-md-4">
-        <h4><span><i class="bi bi-moisture"></i></span> Humedad</h4>
+        <h4><span><i class="bi bi-moisture text-primary"></i></span> Humedad</h4>
         <p class="fs-4">{{ ciudad.humedad }}%</p>
       </div>
 
       <div class="col-md-4">
-        <h4><span><i class="bi bi-wind"></i></span> Viento</h4>
+        <h4><span><i class="bi bi-wind text-secondary"></i></span> Viento</h4>
         <p class="fs-4">{{ ciudad.viento }} km/h</p>
       </div>
     </div>
@@ -66,9 +77,9 @@ const ciudad = computed(() =>
         <div class="card text-center h-100 shadow-sm">
           <div class="card-body">
             <h6>{{ dia.dia }}</h6>
-            <!-- <p class="mb-1">{{ dia.temperatura }}°C</p> -->
-             <p class="mb-1">{{ convertirTemp(dia.temperatura).toFixed(1) }}°{{ unidad }}</p>
+            <p class="mb-1">{{ convertirTemp(dia.temperatura).toFixed(1) }}°{{ unidad }}</p>
             <p class="text-muted">{{ dia.estado }}</p>
+            <i :class="['bi', obtenerIcono(dia.estado), 'fs-2', 'my-2']"></i>
           </div>
         </div>
       </div>
@@ -79,18 +90,17 @@ const ciudad = computed(() =>
 
       <div class="row text-center">
         <div class="col-md-4">
-          <h5>🌡 Máxima</h5>
-          <!-- <p class="fs-5">{{ estadisticas.max }}°C</p> -->
-           <p class="fs-5">{{ convertirTemp(estadisticas.max).toFixed(1) }}°{{ unidad }}</p>
+          <h5><span><i class="bi bi-thermometer-sun text-danger"></i></span> Máxima</h5>
+          <p class="fs-5">{{ convertirTemp(estadisticas.max).toFixed(1) }}°{{ unidad }}</p>
         </div>
 
         <div class="col-md-4">
-          <h5>❄ Mínima</h5>
+          <h5><span><i class="bi bi-thermometer-snow text-info"></i></span> Mínima</h5>
           <p class="fs-5">{{ convertirTemp(estadisticas.min).toFixed(1) }}°{{ unidad }}</p>
         </div>
 
         <div class="col-md-4">
-          <h5>📊 Promedio</h5>
+          <h5><span><i class="bi bi-graph-up text-black"></i></span> Promedio</h5>
           <p class="fs-5">{{ convertirTemp(estadisticas.promedio).toFixed(1) }}°{{ unidad }}</p>
         </div>
       </div>
